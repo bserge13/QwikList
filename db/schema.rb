@@ -10,15 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_20_235250) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_21_003056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "lists", force: :cascade do |t|
-    t.string "title"
-    t.string "body"
+  create_table "items", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "list_items", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_list_items_on_item_id"
+    t.index ["list_id"], name: "index_list_items_on_list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "list_items", "items"
+  add_foreign_key "list_items", "lists"
 end
