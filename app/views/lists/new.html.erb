@@ -1,0 +1,9 @@
+<h1> QwikList </h1>
+
+<p><h3> Create a new list </h3>
+
+<%= form_with url: lists_path, method: :post, data:{turbo: false} do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "ex: Groceries" %>
+  <%= f.submit "Create" %>
+<% end %>
