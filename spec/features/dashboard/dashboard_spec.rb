@@ -13,5 +13,12 @@ RSpec.describe 'List' do
       expect(page).to have_content('QwikList')
       expect(page).to have_button('New List')
     end
+
+    it 'has my lists as buttons in descending order of creation' do 
+      visit root_path
+
+      expect(page).to have_button(@list_1.title)
+      expect(page).to have_button(@list_2.title)
+    end
   end
 end
