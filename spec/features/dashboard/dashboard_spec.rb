@@ -19,6 +19,8 @@ RSpec.describe 'List' do
 
       expect(page).to have_button(@list_1.title)
       expect(page).to have_button(@list_2.title)
+
+      expect(@list_2.title).to appear_before(@list_1.title)
     end
   end
 end

@@ -9,4 +9,14 @@ RSpec.describe List do
     it { should have_many :list_items }
     it { should have_many(:items).through(:list_items) }
   end
+
+  describe 'Calss methods' do 
+    it '#desc_order' do 
+      list_1 = List.create!(title: 'Test list 1')
+      list_2 = List.create!(title: 'Test list 2')
+      list_3 = List.create!(title: 'Test list 3')
+
+      expect(List.desc_order).to eq([list_3, list_2, list_1])
+    end
+  end
 end

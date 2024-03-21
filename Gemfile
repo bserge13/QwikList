@@ -50,6 +50,7 @@ group :development, :test do
   gem 'capybara'
   gem 'faraday'
   gem 'launchy'
+  gem 'orderly'
   gem 'pry'
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 5.0'
