@@ -55,5 +55,17 @@ RSpec.describe 'Lists' do
       expect(current_path).to eq(root_path)
       expect(page).to_not have_button(@list_1.title)
     end
+
+    it 'has a home button that reroutes back to the dashboard' do 
+      visit list_path(@list_2)
+
+      expect(page).to have_button('home')
+
+      within "#home_button" do 
+        click_button('home')
+      end
+
+      expect(current_path).to eq(root_path)
+    end
   end 
 end 

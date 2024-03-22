@@ -1,4 +1,8 @@
 <h1> QwikList </h1>
+<section id="home_button">
+  <p><%= button_to "home", root_path, method: :get %>
+</section>
+
 <p><h3><%= @list.title %></h3>
 
 <p><% @items.each do |item| %>
