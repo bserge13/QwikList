@@ -1,7 +1,10 @@
-<h1> QwikList </h1>
+<%= render partial: "app_partials/header"%>
 
+<h2> Dashboard </h2>
 <%= button_to "New List", new_list_path, method: :get %>
 
 <p><% @lists.each do |list| %>
-  <ul><%= button_to "#{list.title}", list_path(list), method: :get %></ul>
+  <ul>
+    <li><%= button_to "#{list.title}", list_path(list), method: :get %></li>
+  </ul>
 <% end %>

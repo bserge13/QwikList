@@ -1,7 +1,5 @@
-<h1> QwikList </h1>
-<section id="home_button">
-  <p><%= button_to "home", root_path, method: :get %>
-</section>
+<%= render partial: "app_partials/header"%>
+<%= render partial: "app_partials/home_button"%>
 
 <p><h3><%= @list.title %></h3>
 
@@ -11,7 +9,6 @@
     <%= button_to "remove", list_item_path(item), method: :delete %>
   </div>
 <% end %>
-
 
 <p><%= form_with url: list_list_items_path(@list), method: :post, data: {turbo: false} do |f| %>
   <%= f.text_field :description, placeholder: "milk" %>

@@ -1,9 +1,9 @@
-<h1> QwikList </h1>
+<%= render partial: "app_partials/header"%>
+<%= render partial: "app_partials/home_button"%>
 
 <p><h3> Create a new list </h3>
 
 <%= form_with url: lists_path, method: :post, data:{turbo: false} do |f| %>
-  <%= f.label :title %>
   <%= f.text_field :title, placeholder: "ex: Groceries" %>
-  <%= f.submit "Create" %>
+  <%= f.submit "create" %>
 <% end %>
