@@ -1,11 +1,9 @@
 class ItemsController < ApplicationController
-  def create 
-    Item.create!(item_params)
-  end
-
-  private 
-
-  def item_params
-    params.permit(:id, :description, :list_id)
+  def destroy
+    item = Item.find(params[:list_id])
+    list = List.find(params[:id])
+    # :list_id is actually the item id  
+    item.destroy 
+    redirect_to list_path(list)
   end
 end
