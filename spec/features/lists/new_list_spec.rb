@@ -7,6 +7,7 @@ RSpec.describe 'Lists' do
 
       expect(page).to have_content('QwikList')
       expect(page).to have_content('Create a new list')
+      expect(page).to have_button('home')
 
       expect(page).to have_field :title
       expect(page).to have_button('create')
@@ -17,9 +18,13 @@ RSpec.describe 'Lists' do
 
       fill_in :title, with: 'Grocery list'
       click_button('create')
-      expect(current_path).to eq(root_path)
 
-      expect(page).to have_button('Grocery list')
+      new_list = List.last 
+      expect(current_path).to eq(list_path(new_list))
+
+      expect(page).to have_content('QwikList')
+      expect(page).to have_content('Grocery list')
+      expect(page).to have_button('add item')
     end
 
     it 'sad path- flashes an error for an empty field' do 

@@ -2,10 +2,10 @@ class ListsController < ApplicationController
   def new;end 
 
   def create 
-    list = List.create(list_params)
+    new_list = List.create(list_params)
 
-    if list.save && list.title != 'ex: Groceries'
-      redirect_to root_path
+    if new_list.save && new_list.title != 'ex: Groceries'
+      redirect_to list_path(new_list)
     else 
       redirect_to new_list_path
       flash[:alert] = "A list must have a 'Title' to be created" 
