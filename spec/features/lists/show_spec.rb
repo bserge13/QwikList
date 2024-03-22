@@ -42,5 +42,18 @@ RSpec.describe 'Lists' do
 
       expect(page).to_not have_content(@ghost.description)
     end
+
+    it 'deletes a list' do 
+      visit list_path(@list_1)
+
+      expect(page).to have_button('delete list')
+
+      within "#red_button" do 
+        click_button('delete list')
+      end
+
+      expect(current_path).to eq(root_path)
+      expect(page).to_not have_button(@list_1.title)
+    end
   end 
 end 

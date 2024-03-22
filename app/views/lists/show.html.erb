@@ -13,3 +13,7 @@
   <%= f.text_field :description, placeholder: "milk" %>
   <%= f.submit "add item" %>
 <% end %>
+
+<section id="red_button">
+  <p><%= button_to "delete list", list_path(@list), method: :delete %>
+</section>

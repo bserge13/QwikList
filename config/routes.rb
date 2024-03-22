@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'dashboard#index'
 
-  resources :lists, only: [:show, :edit, :update, :new, :create] do 
+  resources :lists, only: [:show, :destroy, :new, :create] do 
     resources :list_items, only: [:create, :destroy] 
     resources :items, only: [:destroy]
   end 
