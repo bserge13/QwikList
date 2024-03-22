@@ -6,7 +6,6 @@ RSpec.describe Item do
   end
 
   describe 'relationships' do 
-    it { should have_many :list_items }
-    it { should have_many(:lists).through(:list_items) }
+    it { should belong_to :list }
   end
 end

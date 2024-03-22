@@ -6,8 +6,7 @@ RSpec.describe List do
   end
 
   describe 'relationships' do 
-    it { should have_many :list_items }
-    it { should have_many(:items).through(:list_items) }
+    it { should have_many :items }
   end
 
   describe 'Calss methods' do 
