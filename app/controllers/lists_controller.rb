@@ -14,6 +14,8 @@ class ListsController < ApplicationController
 
   def show 
     @list = List.find(params[:id])
+    require 'pry'; binding.pry
+    @items = @list.items 
   end
 
   private 

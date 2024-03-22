@@ -1,5 +1,10 @@
 <h1> QwikList </h1>
 <p><%= @list.title %>
 
+<p><% @items.each do |item| %>
+    <%= item.description %>
+  <% end %>
 
+
+<p><%= form_with url:  %>
 <%= button_to "Add item" %>
