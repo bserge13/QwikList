@@ -1,4 +1,6 @@
-<%= render partial: "app_partials/header"%>
+<%
+=begin%>
+ <%= render partial: "app_partials/header"%>
 <%= render partial: "app_partials/home_button"%>
 
 <p><h3><%= @list.title %></h3>
@@ -17,4 +19,47 @@
 
 <section id="red_button">
   <p><%= button_to "delete list", list_path(@list), method: :delete %>
-</section>
+</section> 
+<%
+=end%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>QwikList</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>QwikList</h1>
+  <p>Make lists. Plain & simple, quick & easy</p> 
+</div>
+
+<div class="list_items">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3><%= @list.title %></h3>
+      <p><% @items.each do |item| %>
+          <div id="<%= "item-#{item.id}" %>">
+            <ul><%= item.description %>
+            <%= button_to "remove", list_item_path(item), method: :delete %></ul>
+          </div>
+        <% end %></p>
+      <p><%= form_with url: list_list_items_path(@list), method: :post, data: {turbo: false} do |f| %>
+          <%= f.text_field :description, placeholder: "milk" %>
+          <%= f.submit "add item" %>
+        <% end %></p>
+      <section id="red_button">
+        <p><%= button_to "delete list", list_path(@list), method: :delete %></p>
+      </section>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
