@@ -1,53 +1,31 @@
-<%
-=begin%>
- <%= render partial: "app_partials/header"%>
-
-<h2> Dashboard </h2>
-<%= button_to "New List", new_list_path, method: :get %>
-
-<p><% @lists.each do |list| %>
-  <ul>
-    <li><%= button_to "#{list.title}", list_path(list), method: :get %></li>
-  </ul>
-<% end %> 
-<%
-=end%>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>QwikList</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+<%= render partial: "app_partials/head"%>
+
 <body>
 
-<div class="jumbotron text-center">
-  <h1>QwikList</h1>
-  <p>Make lists. Plain & simple, quick & easy</p> 
-</div>
-  
-<div class="dashboard">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Your lists</h3>
-      <p>These are the lists you've made so far...</p>
-      <p><% @lists.each do |list| %>
-        <p><%= button_to "#{list.title}", list_path(list), method: :get %></p>
-      <% end %></p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Make a new list</h3>
-      <p>This is where you'll make a new list...</p>
-      <p><%= button_to "New list", new_list_path, method: :get %></p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Wanna stay up to date?</h3>
-      <p>Sign up for notifications...</p>
-      <p><%= button_to "Sign me up", root_path, method: :get %></p>
+<%= render partial: "app_partials/app_header"%>
+
+<div class="container">
+  <div class="dashboard">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Your lists</h3>
+        <p>These are the lists you've made so far...</p>
+        <% @lists.each do |list| %>
+          <p><%= button_to "#{list.title}", list_path(list), method: :get, class: "btn btn-primary" %></p>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <h3>Make a new list</h3>
+        <p>Click here to make a new list...</p>
+        <p><%= button_to "New list", new_list_path, method: :get, class: "btn btn-success" %></p>
+      </div>
+      <div class="col-sm-4">
+        <h3>Wanna stay up to date?</h3>
+        <p>Sign up for notifications...</p>
+        <p><%= button_to "Sign me up", root_path, method: :get, class: "btn btn-info" %></p>
+      </div>
     </div>
   </div>
 </div>

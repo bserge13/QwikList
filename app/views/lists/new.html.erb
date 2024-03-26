@@ -1,42 +1,24 @@
-<%
-=begin%>
- <%= render partial: "app_partials/header"%>
-<%= render partial: "app_partials/home_button"%>
-
-<p><h3> Create a new list </h3>
-
-<%= form_with url: lists_path, method: :post, data:{turbo: false} do |f| %>
-  <%= f.text_field :title, placeholder: "ex: Groceries" %>
-  <%= f.submit "create" %>
-<% end %> 
-<%
-=end%>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>QwikList</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+<%= render partial: "app_partials/head"%>
+
 <body>
 
-<div class="jumbotron text-center">
-  <h1>QwikList</h1>
-  <p>Make lists. Plain & simple, quick & easy</p> 
-</div>
+<%= render partial: "app_partials/app_header"%>
 
-<div class="new_form">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Create a new list</h3>
-      <p><%= form_with url: lists_path, method: :post, data:{turbo: false} do |f| %>
-        <%= f.text_field :title, placeholder: "ex: Groceries" %>
-        <%= f.submit "create" %>
-      <% end %></p>
+<div class="container">
+  <div class="new_form">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Create a new list</h3>
+        <p><%= form_with url: lists_path, method: :post, data:{turbo: false} do |f| %>
+          <%= f.text_field :title, placeholder: "ex: Groceries" %>
+          <%= f.submit "create", class: "btn btn-success" %>
+        <% end %></p>
+      </div>
+      <div class="col-sm-4">
+        <%= render partial: "app_partials/home_button"%>
+      </div>
     </div>
   </div>
 </div>
