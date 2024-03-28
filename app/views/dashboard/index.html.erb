@@ -12,9 +12,13 @@
       <div class="col-sm-4">
         <h3>Your lists</h3>
         <p>These are the lists you've made so far...</p>
-        <% @lists.each do |list| %>
-          <p><%= button_to "#{list.title}", list_path(list), method: :get, class: "btn btn-primary" %></p>
-        <% end %>
+        <% if @lists.empty? %>
+          <p><h5> *** Oops, looks like you don't have any lists made *** </h5></p>
+        <% else %>
+          <% @lists.each do |list| %>
+            <p><%= button_to "#{list.title}", list_path(list), method: :get, class: "btn btn-primary" %></p>
+          <% end %>
+        <% end %> 
       </div>
       <div class="col-sm-4">
         <h3>Make a new list</h3>
