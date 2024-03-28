@@ -12,7 +12,7 @@
       <div class="col-sm-4">
         <h3>Your lists</h3>
         <p>These are the lists you've made so far...</p>
-        <% if @lists.empty? %>
+        <% if @lists.empty? == true %>
           <p><h5> *** Oops, looks like you don't have any lists made *** </h5></p>
         <% else %>
           <% @lists.each do |list| %>
@@ -24,9 +24,9 @@
       <div class="col-sm-4">
         <h3>Make a new list</h3>
         <p>Click here to make a new list...</p>
-        <p><%= button_to "New list", new_list_path, method: :get, class: "btn btn-success" %></p>
+        <p><%= button_to "New list", user_lists_path(@user), method: :get, class: "btn btn-success" %></p>
       </div>
-  
+
       <div class="col-sm-4">
         <h3>Wanna stay up to date?</h3>
         <p>Sign up for notifications...</p>

@@ -14,12 +14,14 @@ RSpec.describe 'Lists' do
     end
 
     it 'creates a new list and routes back to the dashboard page' do 
+      user = User.create!(name: 'Karl', email: 'loki_sux69@yahoo.com', password: 'password')
       visit new_list_path 
 
       fill_in :title, with: 'Grocery list'
       click_button('create')
 
       new_list = List.last 
+      
       expect(current_path).to eq(list_path(new_list))
 
       expect(page).to have_content('QwikList')

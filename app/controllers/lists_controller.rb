@@ -1,16 +1,20 @@
 class ListsController < ApplicationController
   def new;end 
 
-  def create 
-    new_list = List.create(list_params)
-
-    if new_list.save && new_list.title != 'ex: Groceries'
-      redirect_to list_path(new_list)
-    else 
-      redirect_to new_list_path
-      flash[:alert] = "A list must have a 'Title' to be created" 
-    end
-  end
+  # def create
+  #   if params[:title].empty? == false 
+  #     new_list = List.create(list_params)
+  #     if new_list.save 
+  #       redirect_to list_path(new_list)
+  #     else 
+  #       flash[:alert] = 'Failed to create list'
+  #       render :new 
+  #     end 
+  #   else 
+  #     redirect_to new_list_path 
+  #     flash[:alert] = "A list must have a 'Title' to be created"
+  #   end
+  # end
 
   def show 
     @list = List.find(params[:id])
@@ -26,6 +30,6 @@ class ListsController < ApplicationController
   private 
 
   def list_params
-    params.permit(:id, :title)
+    params.permit(:title)
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe List do
 
   describe 'class methods' do 
     it '#desc_order' do 
-    user = User.create!(name: 'Karl', email: 'loki_sux69@yahoo.com', password: 'password')
+      user = User.create!(name: 'Karl', email: 'loki_sux69@yahoo.com', password: 'password')
       list_1 = List.create!(title: 'Test list 1', user_id: user.id)
       list_2 = List.create!(title: 'Test list 2', user_id: user.id)
       list_3 = List.create!(title: 'Test list 3', user_id: user.id)

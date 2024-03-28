@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%= render partial: "app_partials/head"%>
+
+<body>
+
+<%= render partial: "app_partials/app_header"%>
+
+<div class="container">
+  <h1>Sign up</h1>
+  <form action: login_path>
+    <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">        
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">        
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <div class="form-group">
+      <input type="password_confirmation" class="form-control" id="pwd" placeholder="Confirm password" name="pwd">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  <br>
+  <%= render partial: "app_partials/home_button"%>
+</div>
+</body>
+</html>

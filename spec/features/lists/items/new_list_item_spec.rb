@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Items' do
   before :each do 
-    @list_2 = List.create!(title: 'Test list 2')
+    @user = User.create!(name: 'Karl', email: 'loki_sux69@yahoo.com', password: 'password')
+
+    @list_2 = List.create!(title: 'Test list 2', user_id: @user.id)
   end 
 
   describe 'List Items' do

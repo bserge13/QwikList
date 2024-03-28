@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Lists' do
   before :each do 
-    @list_1 = List.create!(title: 'Test list 1')
-    @list_2 = List.create!(title: 'Test list 2')
+    @user = User.create!(name: 'Karl', email: 'loki_sux69@yahoo.com', password: 'password')
+    @list_1 = List.create!(title: 'Test list 1', user_id: @user.id)
+    @list_2 = List.create!(title: 'Test list 2', user_id: @user.id)
   end 
 
   describe 'List Show Page' do 
