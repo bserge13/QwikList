@@ -11,7 +11,7 @@ RSpec.describe 'Dashboard' do
       visit root_path
 
       expect(page).to have_content('QwikList')
-      expect(page).to have_button('New List')
+      expect(page).to have_button('New list')
     end
 
     it 'has my lists as buttons in descending order of creation' do 
@@ -26,7 +26,7 @@ RSpec.describe 'Dashboard' do
     it 'routes to a new page to create a list' do 
       visit root_path 
 
-      click_button('New List')
+      click_button('New list')
       expect(current_path).to eq(new_list_path)
     end
 

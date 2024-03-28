@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :lists, only: [:show, :destroy, :new, :create] do 
-    resources :list_items, only: [:create] 
-    resources :items, only: [:destroy]
+    resources :list_items, only: [:create, :destroy] 
   end 
 end
