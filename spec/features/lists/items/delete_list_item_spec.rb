@@ -12,7 +12,7 @@ RSpec.describe 'Lists' do
 
   describe 'List Items' do
     it 'removes an item from a list' do 
-      visit user_list_list_path(@user, @list_1)
+      visit user_list_path(@user, @list_1)
       expect(page).to have_content(@cheese.description)
       expect(page).to have_content(@milk.description)
       expect(page).to have_content(@ghost.description)

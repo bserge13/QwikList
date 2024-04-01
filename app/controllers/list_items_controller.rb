@@ -8,11 +8,12 @@ class ListItemsController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:user_id])
     item = Item.find(params[:id])
     list = List.find(params[:list_id])
 
     item.destroy 
-    redirect_to list_path(list)
+    redirect_to user_list_path(user, list)
   end
 
   private 
