@@ -1,8 +1,10 @@
 class ListItemsController < ApplicationController
   def create 
-    @list = List.find(params[:list_id])
-    @list.items.create(item_params)
-    redirect_to list_path(@list)
+    user = User.find(params[:user_id])
+    list = List.find(params[:list_id])
+    
+    list.items.create(item_params)
+    redirect_to user_list_path(user, list)
   end
 
   def destroy

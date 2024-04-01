@@ -12,7 +12,7 @@ RSpec.describe 'Lists' do
 
   describe 'List Items' do
     it 'removes an item from a list' do 
-      visit list_path(@list_1)
+      visit user_list_list_path(@user, @list_1)
       expect(page).to have_content(@cheese.description)
       expect(page).to have_content(@milk.description)
       expect(page).to have_content(@ghost.description)
@@ -26,3 +26,10 @@ RSpec.describe 'Lists' do
     end
   end
 end 
+
+# user_list_items POST   /users/:user_id/lists/:list_id/list_items(.:format)                                               list_items#create
+# user_list_item DELETE /users/:user_id/lists/:list_id/list_items/:id(.:format)                                           list_items#destroy
+#     user_lists POST   /users/:user_id/lists(.:format)                                                                   lists#create
+#  new_user_list GET    /users/:user_id/lists/new(.:format)                                                               lists#new
+#      user_list GET    /users/:user_id/lists/:id(.:format)                                                               lists#show
+#                DELETE /users/:user_id/lists/:id(.:format)                                                               lists#destroy

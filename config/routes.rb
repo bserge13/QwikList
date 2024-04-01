@@ -9,11 +9,9 @@ Rails.application.routes.draw do
   root 'users#login_form'
 
   resources :users, only: [:create, :show] do
-    resources :user_lists, only: [:new, :create], as: 'lists' do 
-      resources :lists, only: [:show, :destroy] do 
-        resources :list_items, only: [:create, :destroy] , as: 'items'
-      end 
-    end
+    resources :lists, only: [:show, :destroy, :new, :create] do 
+      resources :list_items, only: [:create, :destroy] , as: 'items'
+    end 
   end
 
   get '/register', to: 'users#new', as: :new_user
