@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'users#login_form'
 
   resources :users, only: [:create, :show] do
-    resources :lists, only: [:show, :destroy, :new, :create] do 
+    resources :lists, only: [:index, :show, :destroy, :new, :create] do 
       resources :list_items, only: [:create, :destroy] , as: 'items'
     end 
   end

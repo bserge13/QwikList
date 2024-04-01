@@ -21,6 +21,8 @@ RSpec.describe 'Login page' do
       fill_in :email, with: 'loki_sux69@yahoo.com'
       fill_in :password, with: 'password'
       click_button('login')
+
+      expect(current_path).to eq(user_path(user))
     end
 
     it 'sad path- flashes message for incorrect credentials: email' do 
@@ -54,10 +56,3 @@ RSpec.describe 'Login page' do
   end
 end
 
-# <%= f.text_field :name, placeholder: "John Doe" %>
-# <%= f.text_field :email, placeholder: "john1@gmail.com" %>
-# <%= f.password_field :password, placeholder: "password" %>
-# <%= f.password_field :password_confirmation, placeholder: "password confirmation", required: true %>
-
-# <%= f.submit "login", class: "btn btn-success" %>
-# <% end %></p>

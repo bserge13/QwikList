@@ -16,7 +16,7 @@
           <p><h5> *** Oops, looks like you don't have any lists made *** </h5></p>
         <% else %>
           <% @lists.each do |list| %>
-            <p><%= button_to "#{list.title}", user_list_path(list), method: :get, class: "btn btn-primary" %></p>
+            <p><%= button_to "#{list.title}", user_list_path(@user, list), method: :get, class: "btn btn-primary" %></p>
           <% end %>
         <% end %> 
       </div>
@@ -30,7 +30,7 @@
       <div class="col-sm-4">
         <h3>Wanna stay up to date?</h3>
         <p>Sign up for notifications...</p>
-        <p><%= button_to "Sign me up", root_path, method: :get, class: "btn btn-info" %></p>
+        <p><%= button_to "Sign me up", user_path(@user), method: :get, class: "btn btn-info" %></p>
       </div>
   
     </div>

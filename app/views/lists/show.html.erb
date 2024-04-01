@@ -17,13 +17,15 @@
               <%= button_to "remove", user_list_item_path(@user, @list, item), method: :delete, class: "btn btn-danger btn-xs" %></ul>
             </div>
           <% end %>
-        <p><%= form_with url: user_list_items_path(@user, @list), method: :post, data: {turbo: false} do |f| %>
+        <p><%= form_with url: user_list_items_path(@user, @list), method: :post, data: { turbo: false } do |f| %>
             <%= f.text_field :description, placeholder: "milk" %>
             <%= f.submit "add item", class: "btn btn-success" %>
           <% end %></p>
       </div>
       <div class="col-sm-4">
-        <%= render partial: "app_partials/home_button"%>
+        <section id="home_button">
+          <%= button_to "home", user_path(@user), method: :get, class: "btn btn-primary" %>
+        </section>
       </div>
       <div class="col-sm-4">
         <section id="red_button">

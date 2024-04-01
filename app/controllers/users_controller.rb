@@ -1,13 +1,20 @@
 class UsersController < ApplicationController
   def new;end 
-  
+
   def show 
     @user = User.find(params[:id])
     @lists = @user.lists.desc_order
   end
 
   def create
-    require 'pry'; binding.pry
+    new_user = User.create(user_params)
+
+    if new_user.valid? 
+      redirect_to user_path(new_user)
+    else 
+      flash[:alert] = 'Looks like that email is already in use. Wanna try again?'
+      redirect_to '/register'
+    end
   end 
 
   def login_form;end

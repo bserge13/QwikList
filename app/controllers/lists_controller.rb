@@ -10,9 +10,6 @@ class ListsController < ApplicationController
       new_list = List.create(list_params)
       if new_list.save 
         redirect_to user_list_path(user, new_list)
-      else 
-        flash[:alert] = 'Failed to create list'
-        redirect_to new_user_list_path(user)
       end 
     else 
       redirect_to new_user_list_path(user)
@@ -27,9 +24,10 @@ class ListsController < ApplicationController
   end
 
   def destroy 
+    user = User.find(params[:user_id])
     list = List.find(params[:id])
     list.destroy
-    redirect_to root_path 
+    redirect_to user_path(user)
   end
 
   private 

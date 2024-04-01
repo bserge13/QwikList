@@ -9,14 +9,16 @@ RSpec.describe 'Dashboard' do
 
   describe 'Dashboard Page' do 
     it 'exists' do 
-      visit root_path
+      visit user_path(@user)
 
       expect(page).to have_content('QwikList')
-      expect(page).to have_button('New list')
+      expect(page).to have_content('Your lists')
+      expect(page).to have_content('Make a new list')
+      expect(page).to have_content('Wanna stay up to date?')
     end
 
     it 'has my lists as buttons in descending order of creation' do 
-      visit root_path
+      visit user_path(@user)
 
       expect(page).to have_button(@list_1.title)
       expect(page).to have_button(@list_2.title)
@@ -25,17 +27,17 @@ RSpec.describe 'Dashboard' do
     end
 
     it 'routes to a new page to create a list' do 
-      visit root_path 
+      visit user_path(@user)
 
       click_button('New list')
-      expect(current_path).to eq(new_list_path)
+      expect(current_path).to eq(new_user_list_path(@user))
     end
 
     it 'routes to a lists show page' do 
-      visit root_path 
+      visit user_path(@user)
 
       click_button(@list_2.title)
-      expect(current_path).to eq(list_path(@list_2))
+      expect(current_path).to eq(user_list_path(@user, @list_2))
     end
   end
 end
