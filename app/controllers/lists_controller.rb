@@ -1,18 +1,21 @@
 class ListsController < ApplicationController
-  def new;end 
+  def new
+    @user = User.find(params[:user_id])
+  end 
 
   def create
-    require 'pry'; binding.pry
+    user = User.find(params[:user_id])
+
     if params[:title].empty? == false 
       new_list = List.create(list_params)
       if new_list.save 
-        redirect_to user_list_path(new_list)
+        redirect_to user_list_path(user, new_list)
       else 
         flash[:alert] = 'Failed to create list'
-        render :new 
+        redirect_to new_user_list_path(user)
       end 
     else 
-      redirect_to new_list_path 
+      redirect_to new_user_list_path(user)
       flash[:alert] = "A list must have a 'Title' to be created"
     end
   end
@@ -32,6 +35,6 @@ class ListsController < ApplicationController
   private 
 
   def list_params
-    params.permit(:title)
+    params.permit(:title, :user_id)
   end
 end

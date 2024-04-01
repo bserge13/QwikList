@@ -9,7 +9,7 @@ RSpec.describe 'Lists' do
 
   describe 'List Show Page' do 
     it 'exists' do 
-      visit list_path(@list_2)
+      visit user_list_path(@user, @list_2)
       
       expect(page).to have_content('QwikList')
       expect(page).to have_content('Test list 2')
@@ -22,7 +22,7 @@ RSpec.describe 'Lists' do
     end 
     
     it 'has a home button that reroutes back to the dashboard' do 
-      visit list_path(@list_2)
+      visit user_list_path(@user, @list_2)
   
       expect(page).to have_button('home')
   
@@ -34,7 +34,7 @@ RSpec.describe 'Lists' do
     end
 
     it 'deletes a list' do 
-      visit list_path(@list_1)
+      visit user_list_path(@user, @list_1)
 
       expect(page).to have_button('delete list')
 

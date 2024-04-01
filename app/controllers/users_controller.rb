@@ -21,11 +21,17 @@ class UsersController < ApplicationController
       redirect_to user_path(user)
     else 
       flash[:alert] = "Uh oh, your login info doesn't seem to match our records. Wanna try again?"
-      render :login_form
+      redirect_to login_path
     end
   end
 
   def log_out
 
+  end
+
+  private 
+
+  def user_params
+    params.permit(:name, :email, :password)
   end
 end

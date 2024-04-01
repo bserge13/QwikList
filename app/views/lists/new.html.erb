@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-sm-4">
         <h3>Create a new list</h3>
-        <p><%= form_with url: lists_path, method: :post, data:{turbo: false} do |f| %>
+        <p><%= form_with url: user_lists_path(@user), method: :post, data: { turbo: false } do |f| %>
           <%= f.text_field :title, placeholder: "ex: Groceries" %>
           <%= f.submit "create", class: "btn btn-success" %>
         <% end %></p>
