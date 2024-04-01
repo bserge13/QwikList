@@ -39,5 +39,14 @@ RSpec.describe 'Dashboard' do
       click_button(@list_2.title)
       expect(current_path).to eq(user_list_path(@user, @list_2))
     end
+
+    it 'logs a user out' do 
+      visit user_path(@user)
+
+      expect(page).to have_button('log out')
+      click_button('log out')
+
+      expect(current_path).to eq(root_path)
+    end
   end
 end

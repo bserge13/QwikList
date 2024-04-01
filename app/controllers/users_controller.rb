@@ -2,8 +2,13 @@ class UsersController < ApplicationController
   def new;end 
 
   def show 
-    @user = User.find(params[:id])
-    @lists = @user.lists.desc_order
+    # if current_user
+      @user = User.find(params[:id])
+      @lists = @user.lists.desc_order
+    # else 
+      # redirect_to root_path
+      # flash[:error] = 'You must be logged in or registered to access your dashboard'
+    # end
   end
 
   def create
@@ -33,12 +38,13 @@ class UsersController < ApplicationController
   end
 
   def log_out
-
+    session.clear
+    redirect_to root_path
   end
 
   private 
 
   def user_params
-    params.permit(:name, :email, :password)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 end
