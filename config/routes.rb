@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'users#login_form'
 
-  resources :users, only: [:create, :show] do
+  resources :users, only: [:create, :show, :edit, :update] do
     resources :lists, only: [:index, :show, :destroy, :new, :create] do 
       resources :list_items, only: [:create, :destroy] , as: 'items'
     end 

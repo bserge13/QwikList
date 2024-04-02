@@ -42,6 +42,21 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def edit 
+    @user = User.find(params[:id])
+  end
+
+  def update 
+    user = User.find(params[:id])
+    
+    if params[:commit] == 'sign up'
+      user.update_columns(notifications_on: true)
+    elsif params[:commit] == 'cancel notifications'
+      user.update_columns(notifications_on: false)
+    end 
+    redirect_to edit_user_path(user)
+  end
+
   private 
 
   def user_params

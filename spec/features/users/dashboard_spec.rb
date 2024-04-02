@@ -48,5 +48,13 @@ RSpec.describe 'Dashboard' do
 
       expect(current_path).to eq(root_path)
     end
+
+    it 'routes a user to a form page to sign up for updates' do 
+      visit user_path(@user)
+
+      expect(page).to have_button('Sign me up')
+      click_button('Sign me up')
+      expect(current_path).to eq(edit_user_path(@user))
+    end
   end
 end

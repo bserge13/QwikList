@@ -30,7 +30,11 @@
       <div class="col-sm-3">
         <h3>Wanna stay up to date?</h3>
         <p>Sign up for notifications...</p>
-        <p><%= button_to "Sign me up", user_path(@user), method: :get, class: "btn btn-info" %></p>
+        <% if @user.notifications_on == false %>
+          <p><%= button_to "Sign me up", edit_user_path(@user), method: :get, class: "btn btn-info" %>
+        <% elsif @user.notifications_on == true %>
+          <p><%= button_to "Manage notifications", edit_user_path(@user), method: :get, class: "btn btn-danger" %>
+        <% end %>
       </div>
   
       <div class="col-sm-3">
