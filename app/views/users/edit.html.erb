@@ -14,16 +14,16 @@
         <% if @user.notifications_on == false %>
             <h3>Sign up for list idea suggestions...</h3>
             <p><%= form_with url: user_path(@user), method: :patch do |f| %>
-              <%= f.telephone_field :phone, placeholder: "phone number" %>  
+              <%= f.label :phone_num, "Phone number" %>
+              <%= f.telephone_field :phone_num, placeholder: "123-456-7890", required: true %>  
               <%= f.submit "sign up", class: "btn btn-success" %>
             <% end %>
             <p>No ads, just food for thought from us. Opt out at anytime! 
         <% elsif @user.notifications_on == true %>
             <h3>Want to opt out of your notifications?</h3>
-              <p><%= form_with url: user_path(@user), method: :patch do |f| %>
+            <p><%= form_with url: user_path(@user), method: :patch do |f| %>
               <%= f.submit "cancel notifications", class: "btn btn-danger" %>
             <% end %>
-
         <% end %>
       </div>
     </div>

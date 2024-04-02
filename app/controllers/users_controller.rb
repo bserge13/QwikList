@@ -50,10 +50,12 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     
     if params[:commit] == 'sign up'
-      user.update_columns(notifications_on: true)
+      twilio_num_format = '+1' + params[:phone_num].delete('-')
+      user.update_columns(notifications_on: true, phone_num: twilio_num_format)
     elsif params[:commit] == 'cancel notifications'
-      user.update_columns(notifications_on: false)
+      user.update_columns(notifications_on: false, phone_num: nil)
     end 
+
     redirect_to edit_user_path(user)
   end
 
@@ -62,4 +64,5 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
   end
+
 end

@@ -9,6 +9,7 @@ module Twilio
     def initialize(body, to_phone_num) # to_phone = User.all_phones *requires   model method
       @body = body
       @to_phone_num = to_phone_num # or no to_phone argument and set variable to User.all_phones
+      # User.
     end
     
     def call 
