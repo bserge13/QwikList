@@ -6,7 +6,7 @@ class SmsService
   TWILIO_TEST_PHONE = Rails.application.credentials.twilio[:test_phone_num] 
 
   def initialize(holiday)
-    @body_message = "#{holiday.title} is this month. May be time for a new leading up to it!"
+    @body_message = "#{holiday.namee} is coming. May be time for a new leading up to it!"
     @to_phone_num = User.notification_numbers
   end
   
