@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Lists' do
+  before :each do 
+    @user = User.create!(name: 'Karl', email: 'loki_sux69@yahoo.com', password: 'password')
+  end
   describe 'New List Page' do 
     it 'exists' do 
-      visit new_list_path 
+      visit new_user_list_path(@user)
 
       expect(page).to have_content('QwikList')
       expect(page).to have_content('Create a new list')
@@ -14,24 +17,26 @@ RSpec.describe 'Lists' do
     end
 
     it 'creates a new list and routes back to the dashboard page' do 
-      visit new_list_path 
+      loki = User.create!(name: 'Loki', email: 'karl_sux69@gmail.com', password: 'password1')
+      visit new_user_list_path(loki)
 
-      fill_in :title, with: 'Grocery list'
+      fill_in :title, with: 'movie list'
       click_button('create')
 
       new_list = List.last 
-      expect(current_path).to eq(list_path(new_list))
+      
+      expect(current_path).to eq(user_list_path(loki, new_list))
 
       expect(page).to have_content('QwikList')
-      expect(page).to have_content('Grocery list')
+      expect(page).to have_content('movie list')
       expect(page).to have_button('add item')
     end
 
     it 'sad path- flashes an error for an empty field' do 
-      visit new_list_path 
+      visit new_user_list_path(@user)
 
       click_button('create')
-      expect(current_path).to eq(new_list_path)
+      expect(current_path).to eq(new_user_list_path(@user))
       expect(page).to have_content("A list must have a 'Title' to be created")
     end
   end

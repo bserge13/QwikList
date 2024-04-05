@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<%= render partial: "app_partials/head"%>
+
+<body>
+
+<%= render partial: "app_partials/app_header"%>
+
+<div class="container">
+  <h1>Sign up</h1>
+  <%= form_with url: users_path, method: :post do |f| %>
+    <%= f.text_field :name, placeholder: "Name (just a first is fine)", required: true %>
+    <%= f.text_field :email, placeholder: "Email", required: true %>
+    <%= f.password_field :password, placeholder: "Password", required: true %>
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", required: true %>
+
+    <%= f.submit "Submit", class: "btn btn-success" %>
+  <% end %></p>
+  <br>
+    <%= button_to "home", root_path, method: :get, class: "btn btn-primary" %>
+</div>
+</body>
+</html>

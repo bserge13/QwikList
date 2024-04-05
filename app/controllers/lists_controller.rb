@@ -1,31 +1,38 @@
 class ListsController < ApplicationController
-  def new;end 
+  def new
+    @user = User.find(params[:user_id])
+  end 
 
-  def create 
-    new_list = List.create(list_params)
+  def create
+    user = User.find(params[:user_id])
 
-    if new_list.save && new_list.title != 'ex: Groceries'
-      redirect_to list_path(new_list)
+    if params[:title].empty? == false 
+      new_list = List.create(list_params)
+      if new_list.save 
+        redirect_to user_list_path(user, new_list)
+      end 
     else 
-      redirect_to new_list_path
-      flash[:alert] = "A list must have a 'Title' to be created" 
+      redirect_to new_user_list_path(user)
+      flash[:alert] = "A list must have a 'Title' to be created"
     end
   end
 
   def show 
+    @user = User.find(params[:user_id])
     @list = List.find(params[:id])
     @items = @list.items 
   end
 
   def destroy 
+    user = User.find(params[:user_id])
     list = List.find(params[:id])
     list.destroy
-    redirect_to root_path 
+    redirect_to user_path(user)
   end
 
   private 
 
   def list_params
-    params.permit(:id, :title)
+    params.permit(:title, :user_id)
   end
 end
