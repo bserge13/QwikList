@@ -18,7 +18,7 @@
             </div>
           <% end %>
         <p><%= form_with url: user_list_items_path(@user, @list), method: :post, data: { turbo: false } do |f| %>
-            <%= f.text_field :description, placeholder: "milk" %>
+            <%= f.text_field :description, placeholder: "milk", required: true %>
             <%= f.submit "add item", class: "btn btn-success" %>
           <% end %></p>
       </div>

@@ -29,7 +29,6 @@ class UsersController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = 'Welcome back to QwikList!'
       redirect_to user_path(user)
     else 
       flash[:alert] = "Uh oh, your login info doesn't seem to match our records. Wanna try again?"
@@ -64,5 +63,4 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
   end
-
 end

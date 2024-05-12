@@ -13,7 +13,6 @@ class ListsController < ApplicationController
       end 
     else 
       redirect_to new_user_list_path(user)
-      flash[:alert] = "A list must have a 'Title' to be created"
     end
   end
 
